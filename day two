@@ -1,0 +1,115 @@
+Lesson 2: Variables and Numbers
+🎯 Objective: Learn how to work with variables and perform basic number operations.
+
+💡 What We’ll Learn:
+Definition and usage of variables
+Basic operations on numbers (addition, subtraction, multiplication, division)
+Storing and retrieving results in a contract
+📜 Code Block:
+#[contract]
+mod MathBasics {
+    #[storage]
+    struct Storage {
+        result: felt252, // To store the result of operations
+    }
+
+    #[constructor]
+    fn constructor(ref self: ContractState) {
+        self.result.write(0); // Initialize result to 0
+    }
+
+    #[view]
+    fn get_result(self: @ContractState) -> felt252 {
+        self.result.read()
+    }
+
+    #[external]
+    fn add(ref self: ContractState, a: felt252, b: felt252) {
+        let sum = a + b;
+        self.result.write(sum); // Store the result in storage
+    }
+
+    #[external]
+    fn subtract(ref self: ContractState, a: felt252, b: felt252) {
+        let difference = a - b;
+        self.result.write(difference); // Store the result in storage
+    }
+
+    #[external]
+    fn multiply(ref self: ContractState, a: felt252, b: felt252) {
+        let product = a * b;
+        self.result.write(product); // Store the result in storage
+    }
+
+    #[external]
+    fn divide(ref self: ContractState, a: felt252, b: felt252) {
+        assert(b != 0, 'Division by zero is not allowed');
+        let quotient = a / b;
+        self.result.write(quotient); // Store the result in storage
+    }
+}
+
+
+Here’s Lesson 2 in English for seamless integration:
+
+Lesson 2: Variables and Numbers
+🎯 Objective: Learn how to work with variables and perform basic number operations.
+
+💡 What We’ll Learn:
+Definition and usage of variables
+Basic operations on numbers (addition, subtraction, multiplication, division)
+Storing and retrieving results in a contract
+📜 Code Block:
+rust
+Kodu kopyala
+#[contract]
+mod MathBasics {
+    #[storage]
+    struct Storage {
+        result: felt252, // To store the result of operations
+    }
+
+    #[constructor]
+    fn constructor(ref self: ContractState) {
+        self.result.write(0); // Initialize result to 0
+    }
+
+    #[view]
+    fn get_result(self: @ContractState) -> felt252 {
+        self.result.read()
+    }
+
+    #[external]
+    fn add(ref self: ContractState, a: felt252, b: felt252) {
+        let sum = a + b;
+        self.result.write(sum); // Store the result in storage
+    }
+
+    #[external]
+    fn subtract(ref self: ContractState, a: felt252, b: felt252) {
+        let difference = a - b;
+        self.result.write(difference); // Store the result in storage
+    }
+
+    #[external]
+    fn multiply(ref self: ContractState, a: felt252, b: felt252) {
+        let product = a * b;
+        self.result.write(product); // Store the result in storage
+    }
+
+    #[external]
+    fn divide(ref self: ContractState, a: felt252, b: felt252) {
+        assert(b != 0, 'Division by zero is not allowed');
+        let quotient = a / b;
+        self.result.write(quotient); // Store the result in storage
+    }
+}
+🔍 Lesson Breakdown:
+What We Learn:
+Using variables to store and manipulate data.
+Performing mathematical operations.
+Storing results in a smart contract.
+New Concepts:
+Arithmetic operations in Cairo.
+Using assert to handle errors.
+Reading and writing data in storage.
